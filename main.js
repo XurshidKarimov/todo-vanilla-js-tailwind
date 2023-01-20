@@ -59,7 +59,14 @@ add.addEventListener("click", () => {
 
         postedTime.textContent = `Posted on: ${day}.${month}.${year} / ${hour}:${minute}:${secund}`;
         postedTime.setAttribute("date", currentTime);
-        postedTime.style.textAlign = "end";
+         
+        //classes for add to tag for tailwind
+        let timeClass = ["italic", "font-bold", "text-end"];
+
+        //adding classes to tag for tailwind
+        timeClass.forEach(element => {
+            postedTime.classList.add(element);
+        })
 
         child.classList.add("post-list-item");
 
@@ -101,7 +108,7 @@ remove.addEventListener("click", () => {
         }
         else{
             alert("No items for remove.");
-            title.focus();            
+            author.focus();            
         }
     }
     else{

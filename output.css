@@ -693,6 +693,10 @@ select {
   margin-top: 1.25rem;
 }
 
+.inline {
+  display: inline;
+}
+
 .flex {
   display: flex;
 }
@@ -771,14 +775,13 @@ select {
   padding-right: 1.5rem;
 }
 
+.text-end {
+  text-align: end;
+}
+
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 
 .font-extrabold {
@@ -787,6 +790,10 @@ select {
 
 .font-bold {
   font-weight: 700;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .text-cyan-700 {
