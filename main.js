@@ -34,12 +34,13 @@ add.addEventListener("click", () => {
             postedTime = document.createElement("time");
 
         // adding elements to child tag <li>
-        child.appendChild(postId);
-        child.appendChild(childAuthor);
-        child.appendChild(childTitle);
-        child.appendChild(childText);
-        child.appendChild(postedTime);
 
+        let childElementsLi = [postId, childAuthor, childTitle, childText, postedTime];
+
+        childElementsLi.forEach(element => {
+            child.appendChild(element);
+        })
+        
         //wrap for long words
         childText.style.overflowWrap = "anywhere";
         
