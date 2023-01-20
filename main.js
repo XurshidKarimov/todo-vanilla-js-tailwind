@@ -18,6 +18,8 @@ add.addEventListener("click", () => {
         child.appendChild(childTitle);
         child.appendChild(childText);
         
+        childText.style.overflowWrap = "anywhere";
+
         postId.textContent = `ID: ${postQueue}`;
         childTitle.textContent = title.value;
         childText.textContent = postText.value;
@@ -28,6 +30,9 @@ add.addEventListener("click", () => {
 
         postList.appendChild(child);
         
+        title.value = '';
+        postText.value = '';
+
         ++postQueue;
     }
     else{
