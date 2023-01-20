@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="main.css">
+    <title>To-Do</title>
+</head>
+<body>
+
+<section class="w-[1200px] my-0 mx-auto border-1">
+    <h2 class="text-5xl font-extrabold text-cyan-700">Posting</h2>
+    <div class="w-[45rem] flex flex-col gap-y-3 mt-5">
+        <input id="postTitle" class="w-full border-0 shadow-sm shadow-slate-400 outline-none" type="text" placeholder="Title..." autofocus>
+        <textarea id="postText" class="w-full border-0 shadow-sm shadow-slate-400 outline-none resize-none h-40" name="" placeholder="Your text..."></textarea>
+
+        <div class="flex gap-x-3">
+            <button class="border-4 border-emerald-800 rounded-md py-3 px-6" id="addPost">Add</button>
+            <button class="border-4 border-red-800 rounded-md py-3 px-6" id="deletePost">Delete</button>
+            <button class="border-4 border-orange-500 rounded-md py-3 px-6" id="changePost">Change</button>            
+        </div>
+    </div>
+    
+    <ul id="postList" class="mt-5 w-[45rem] flex flex-col gap-y-3"></ul>
+</section>
+
+
+
+
+<script src="./main.js"></script>
+</body>
+</html>
