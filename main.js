@@ -4,7 +4,8 @@ let title = document.getElementById("postTitle"),
     remove = document.getElementById("deletePost"),
     change = document.getElementById("changePost"),
     postList = document.getElementById("postList"),
-    postQueue = 1;
+    postQueue = 1,
+    postsArr = [];
 
 add.addEventListener("click", () => {
     if(title.value && postText.value){
@@ -23,8 +24,9 @@ add.addEventListener("click", () => {
 
         child.classList.add("post-list-item");
 
+        postsArr.push(child);
+
         postList.appendChild(child);
-        
         
         ++postQueue;
     }
@@ -40,6 +42,34 @@ add.addEventListener("click", () => {
                 postText.focus();
             }
         }
-    }
+    } 
+})
+
+
+remove.addEventListener("click", () => {
+    let idInput = document.getElementById("idInput");
+    let checkIdRemoveBtn = remove.getAttribute("id");
     
+    
+    if(checkIdRemoveBtn == "deletePost"){
+        idInput.style.display = "inline";
+        idInput.focus();
+        remove.setAttribute("id", "deletePostActive");    
+    }
+    else{
+        if(idInput.checkValidity() && +idInput.value <= postQueue){
+            if(postList.hasChildNodes()){
+                postList.removeChild(postList.children[(+idInput.value)-1]);
+                idInput.value = '';
+                idInput.style.display = "none";
+                remove.setAttribute("id", "deletePost");
+            }
+            else{
+                alert("No items for delete");
+                idInput.style.display = "none";
+                remove.setAttribute("id", "deletePost");
+            }
+           
+        }
+    }
 })
