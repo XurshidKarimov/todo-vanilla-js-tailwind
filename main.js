@@ -1,3 +1,5 @@
+//get elements
+
 let author = document.getElementById("postAuthor"),
     title = document.getElementById("postTitle"),
     postText = document.getElementById("postText"),
@@ -8,7 +10,11 @@ let author = document.getElementById("postAuthor"),
     postQueue = 0,
     postsArr = [];
 
+//elements must be check for empty
 let postElements = [author, title, postText];
+
+
+// ADD-BTN
 
 add.addEventListener("click", () => {
 
@@ -17,7 +23,9 @@ add.addEventListener("click", () => {
         element.value = element.value.replace(/^\s+|\s+$/gm, '');
     })
 
+    // check elements for all values are not empty
     if(title.value && postText.value && author.value){
+        // creating elements for child tag <li>
         let child = document.createElement("li"),
             childAuthor = document.createElement("h3")
             childTitle = document.createElement("h4"),
@@ -25,22 +33,26 @@ add.addEventListener("click", () => {
             postId = document.createElement("span"),
             postedTime = document.createElement("time");
 
-
+        // adding elements to child tag <li>
         child.appendChild(postId);
         child.appendChild(childAuthor);
         child.appendChild(childTitle);
         child.appendChild(childText);
         child.appendChild(postedTime);
 
+        //wrap for long words
         childText.style.overflowWrap = "anywhere";
         
+        //increment ID
         ++postQueue;
         
+        //join data in child-elements
         postId.textContent = `ID: ${postQueue}`;
         childAuthor.textContent = `Author: ${author.value}`;
         childTitle.textContent = title.value;
         childText.textContent = postText.value;
 
+        //time&date
         let currentTime = new Date();
         let hour = currentTime.getHours(),
             minute = currentTime.getMinutes(),
@@ -70,11 +82,15 @@ add.addEventListener("click", () => {
 
         child.classList.add("post-list-item");
 
+        //POSTS ARR
         postsArr.push(child);
 
+        //ADDING TO PARENT TAG <UL> TAG <LI>
         postList.appendChild(child);
         
+        //AFTER ADDING INPUTS CLEARED and focused to first input
         author.value = title.value = postText.value = '';
+        author.focus();
 
     }
     else{
@@ -95,6 +111,7 @@ add.addEventListener("click", () => {
     } 
 })
 
+// REMOVE-BTN
 
 remove.addEventListener("click", () => {
     let idInput = document.getElementById("idInput");
