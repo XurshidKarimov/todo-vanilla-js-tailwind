@@ -1,4 +1,5 @@
-let title = document.getElementById("postTitle"),
+let author = document.getElementById("postAuthor"),
+    title = document.getElementById("postTitle"),
     postText = document.getElementById("postText"),
     add = document.getElementById("addPost"),
     remove = document.getElementById("deletePost"),
@@ -7,25 +8,36 @@ let title = document.getElementById("postTitle"),
     postQueue = 0,
     postsArr = [];
 
+let postElements = [author, title, postText];
+
 add.addEventListener("click", () => {
-    if(title.value && postText.value){
+
+    //checking values to empty or not
+    postElements.forEach(element => {
+        element.value = element.value.replace(/^\s+|\s+$/gm, '');
+    })
+
+    if(title.value && postText.value && author.value){
         let child = document.createElement("li"),
-            childTitle = document.createElement("h3"),
+            childAuthor = document.createElement("h3")
+            childTitle = document.createElement("h4"),
             childText = document.createElement("p"),
             postId = document.createElement("span"),
             postedTime = document.createElement("time");
 
 
         child.appendChild(postId);
+        child.appendChild(childAuthor);
         child.appendChild(childTitle);
         child.appendChild(childText);
         child.appendChild(postedTime);
 
         childText.style.overflowWrap = "anywhere";
-
+        
         ++postQueue;
-
+        
         postId.textContent = `ID: ${postQueue}`;
+        childAuthor.textContent = `Author: ${author.value}`;
         childTitle.textContent = title.value;
         childText.textContent = postText.value;
 
@@ -55,19 +67,21 @@ add.addEventListener("click", () => {
 
         postList.appendChild(child);
         
-        title.value = '';
-        postText.value = '';
+        author.value = title.value = postText.value = '';
 
     }
     else{
-        if(!title.value && !postText.value){
-            title.focus();
+        if(!author.value && !title.value && !postText.value){
+            author.focus();
         }
         else{
-            if(!title.value){
+            if(!author.value){
+                author.focus();
+            }
+            else if(!title.value){
                 title.focus();
             }
-            if(!postText.value){
+            else if(!postText.value){
                 postText.focus();
             }
         }
