@@ -7,8 +7,6 @@
     padding: 10px 15px;
 }
 
-.time-style{
-    font-style: italic;
-    font-weight: 600;
-    text-align: end;
+.txt-area{
+    min-height: 200px;
 }
